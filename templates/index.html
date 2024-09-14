@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RE-DACT Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>RE-DACT: Redaction Tool</h1>
+        <form method="POST">
+            <label for="input_text">Enter text to redact:</label>
+            <textarea id="input_text" name="input_text" rows="10" cols="75" required></textarea>
+            
+            <label for="redaction_type">Select redaction type:</label>
+            <select id="redaction_type" name="redaction_type" required>
+                <option value="redact">Redact</option>
+                <option value="mask">Mask</option>
+                <option value="anonymize">Anonymize</option>
+            </select>
+            
+            <button type="submit">Process</button>
+        </form>
+
+        {% if redacted_text %}
+        <h2>Processed Text:</h2>
+        <pre>{{ redacted_text }}</pre>
+        {% endif %}
+    </div>
+</body>
+</html>
